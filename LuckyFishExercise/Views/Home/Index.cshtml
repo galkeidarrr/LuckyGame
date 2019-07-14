@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    .selectedSign {
+        color: red !important;
+        
+        }   
+    .number-input{
+        width:50px;
+    }
+
+    .errorMsg {
+        color: red;
+    }
+</style>
+<h2>Wheel Scratch Card</h2>
+
+<div class="container">
+    <div class="row">
+        <div id="wheel" class="col col-xs-8">
+        </div>
+        <div id="cards" class="col col-xs-4">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-xs-3">
+            pay table
+        </div>
+        <div class="col col-xs-3">
+             <div>
+                Bet: <input id="bet" class="number-input" type="number" value="0" />
+                Cards: <input id="scratch" class="number-input" type="number" value="0" />
+            </div>
+            <div id="errorMsg" class="errorMsg" style="display: none;">
+                Values must be grater then 1
+            </div>
+        </div>
+        <div class="col col-xs-3">
+            <button id="play" onclick="play()">
+                Play
+            </button>
+        </div>
+        <div id="prize" class="col col-xs-3">
+            
+        </div>
+    </div>
+</div>
+
+<script>
+    const play = function () {
+        $(".selectedSign").removeClass("selectedSign");
+        const bet = $("#bet").val();
+        const scratch = $("#scratch").val();
+        const URL = "/game/spin?bet=" + bet + "&cards=" + scratch;
+        $.get(URL, function (game) {
+            $("#prize").html(game.prize ? "You won: " + game.prize : "You lose");
+            game._selectedSigns.forEach(selectedSign=> {
+                $("#" + selectedSign._SignID).addClass("selectedSign");
+            });
+
+            $("#cards").html("");
+            game._ScratchCards.forEach(card=> {
+                let element = "<div>";
+                card.forEach(sign=> {
+                    element += "<span>" + sign._SignName + " | </span>"
+                });
+                element += "</div>";
+                $("#cards").append(element);
+            });
+
+        });
+    }
+
+    const changeHandler = function (e) {
+        if (isFormValid()) {
+            $("#errorMsg").hide();
+            $('#play').removeProp('disabled');
+
+        } else {
+            $("#errorMsg").show();
+            $('#play').prop('disabled', true);
+
+        }
+        if (parseInt(e.target.value) < 1) {
+            e.target.value = 0;
+        }
+    }
+
+    const isFormValid = function () {
+        return parseInt($("#bet").val()) > 0 && parseInt($("#scratch").val()) > 0;
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+
+        
+        $("#bet").change(changeHandler);
+        $("#scratch").change(changeHandler);
+
+        $.get("/game", function (game) {
+            $("#bet").val(game.playerBet);
+            $("#scratch").val(game.playerNumOfScratch);
+            game._WheelSigns.forEach(sign=> {
+                $("#wheel").append("<div id=" + sign._SignID + ">" + sign._SignName + "</div>");
+            });
+
+
+        });
+
+
+    });
+</script>

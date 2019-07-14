@@ -1,0 +1,69 @@
+﻿@model IEnumerable<LuckyFishExercise.Models.Conf>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model._bet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model._numScratchcards)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model._numSignOnWheel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model._numSignOnScratchcards)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model._repeat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model._numSelectedSigns)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model._withJoker)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item._bet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item._numScratchcards)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item._numSignOnWheel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item._numSignOnScratchcards)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item._repeat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item._numSelectedSigns)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item._withJoker)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item._confID }) |
+            @Html.ActionLink("Details", "Details", new { id=item._confID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item._confID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<LuckyFishExercise.Models.Sign>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model._SignName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model._SignJoker)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item._SignName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item._SignJoker)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item._SignID }) |
+            @Html.ActionLink("Details", "Details", new { id=item._SignID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item._SignID })
+        </td>
+    </tr>
+}
+
+</table>

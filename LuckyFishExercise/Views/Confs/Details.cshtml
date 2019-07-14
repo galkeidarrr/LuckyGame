@@ -1,0 +1,74 @@
+﻿@model LuckyFishExercise.Models.Conf
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Conf</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model._bet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._bet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model._numScratchcards)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._numScratchcards)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model._numSignOnWheel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._numSignOnWheel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model._numSignOnScratchcards)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._numSignOnScratchcards)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model._repeat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._repeat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model._numSelectedSigns)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._numSelectedSigns)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model._withJoker)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._withJoker)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model._confID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

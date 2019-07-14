@@ -1,0 +1,80 @@
+﻿@model LuckyFishExercise.Models.Conf
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Conf</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model._bet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._bet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model._numScratchcards)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._numScratchcards)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model._numSignOnWheel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._numSignOnWheel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model._numSignOnScratchcards)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._numSignOnScratchcards)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model._repeat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._repeat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model._numSelectedSigns)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._numSelectedSigns)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model._withJoker)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._withJoker)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
